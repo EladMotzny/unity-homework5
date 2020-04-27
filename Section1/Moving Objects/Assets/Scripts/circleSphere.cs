@@ -5,38 +5,24 @@ using UnityEngine;
 public class circleSphere : MonoBehaviour
 {
 
-    float timeCounter = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Vector3 target = new Vector3(14f,1f, 0.0f);
 
     // Update is called once per frame
     void Update()
     {
 
-        timeCounter += Time.deltaTime;
 
-
-        float x = 13f;
-        float y = 1;
-        float z = 0;
 
         if (Input.GetKey("left"))
         {
-            x = Mathf.Cos(timeCounter) * 4f + 13f;
-            z = Mathf.Sin(timeCounter) * 4f;
-            transform.position = new Vector3(x, y, z);
+            transform.RotateAround(target, Vector3.up, 30 * Time.deltaTime);
         }
-
         if (Input.GetKey("right"))
         {
-            x = Mathf.Cos(timeCounter) * 4f + 13f;
-            z = Mathf.Sin(-timeCounter) * 4f;
-            transform.position = new Vector3(x, y, z);
+            transform.RotateAround(target, Vector3.up, -30 * Time.deltaTime);
         }
 
-        
+
+
     }
 }
